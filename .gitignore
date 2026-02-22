@@ -47,3 +47,4 @@ mod/
 cleo.h
 cleoaddon.h
 isautils.h
+aml-psdk/
