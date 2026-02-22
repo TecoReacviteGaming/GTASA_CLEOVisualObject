@@ -39,3 +39,12 @@
 
 # debug information files
 *.dwo
+
+# ignore unnecessary stuff
+aml-psdk/
+rw/
+libs/
+mod/
+cleo.h
+cleoaddon.h
+isautils.h
