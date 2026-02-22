@@ -41,7 +41,6 @@
 *.dwo
 
 # ignore unnecessary stuff
-aml-psdk/
 rw/
 libs/
 mod/
