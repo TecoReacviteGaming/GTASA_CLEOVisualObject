@@ -11,8 +11,8 @@ echo "[BUILD] Done!"
 
 directory="$(cd "$(dirname "$0")" && pwd)"
 folderName="$(basename "$directory")"
-rm -rf /sdcard/MyLibs/$folderName
-cp -r "$directory/libs" /sdcard/MyLibs/$folderName
-echo "[BUILD] Lib located at: /sdcard/MyLibs/$folderName"
+rm -rf /sdcard/CompiledLibs/$folderName
+cp -r "$directory/libs" /sdcard/CompiledLibs/$folderName
+echo "[BUILD] Lib located at: /sdcard/CompiledLibs/$folderName folder"
 
 exit $EXIT_CODE

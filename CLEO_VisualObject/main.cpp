@@ -349,7 +349,7 @@ ON_MOD_LOAD()
         sautils->AddButton(SetType_Mods, bufVer, NoneFunctionLogic);
     }
     
-    // Game fishing
+    // Game event
     Events::restartGameEvent += []()
     {
         // Ped
@@ -389,7 +389,7 @@ ON_MOD_LOAD()
         ObjWorld.clear();
     };
     
-    // Ped fishing
+    // Ped event
     Events::pedRenderEvent.after += [](CPed* self)
     {
         PedData* xdata = PedExtended::GetExtData(self);
@@ -454,7 +454,7 @@ ON_MOD_LOAD()
         PedExtended::GetExtData(self)->Reset();
     };
     
-    // Vehicle fishing
+    // Vehicle event
     Events::vehicleRenderEvent.after += [](CVehicle* self)
     {
         VehicleData* xdata = VehicleExtended::GetExtData(self);
@@ -514,7 +514,7 @@ ON_MOD_LOAD()
         VehicleExtended::GetExtData(self)->Reset();
     };
     
-    // Object fishing
+    // Object event
     Events::objectRenderEvent.after += [](CObject* self)
     {
         ObjectData* xdata = ObjectExtended::GetExtData(self);
@@ -1049,7 +1049,7 @@ CLEO_Fn(GET_VISUAL_OBJECT_DFF_NAME)
     {
         const char* dff_name = visual->dff_name;
         cleoaddon->WriteString(handle, dff_name);
-        cleoaddon->UpdateCompareFlag(handle, dff_name != "");
+        cleoaddon->UpdateCompareFlag(handle, dff_name != nullptr);
     }
 }
 CLEO_Fn(IS_VISUAL_OBJECT_MODEL_ID)
