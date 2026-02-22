@@ -1,3 +1,6 @@
 [submodule "CLEO_VisualObject/aml-psdk"]
 	path = CLEO_VisualObject/aml-psdk
 	url = https://github.com/AndroidModLoader/aml-psdk-gtasa.git
+[submodule "GTASA_CLEOVisualObject/aml-psdk"]
+	path = GTASA_CLEOVisualObject/aml-psdk
+	url = https://github.com/AndroidModLoader/aml-psdk-gtasa.git
