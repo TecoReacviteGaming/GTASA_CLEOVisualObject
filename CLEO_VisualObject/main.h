@@ -3,10 +3,10 @@
 #include <vector>
 #include <cstddef>
 #include <cmath>
+
 #include "cleo.h"
 #include "cleoaddon.h"
 #include "isautils.h"
-
 extern cleo_ifs_t* cleo;
 extern cleo_addon_ifs_t* cleoaddon;
 extern ISAUtils* sautils;
@@ -43,7 +43,6 @@ class VehicleData
 public:
     std::vector<VisualObject*> VisualObjects;
     uint16_t ScriptID;
-    CVehicle* thisVeh;
     
     void Reset()
     {
@@ -63,9 +62,6 @@ public:
         ScriptID = 0;
     }
 };
-extern PedData;
-extern VehicleData;
-extern ObjectData;
 std::vector<PedData*> PedExtData;
 std::vector<VehicleData*> VehExtData;
 std::vector<ObjectData*> ObjExtData;
@@ -96,7 +92,6 @@ public:
     {
         if (VehExtData.size() == 0)
         {
-            
             for (int i = 0; i < CPools::ms_pVehiclePool->m_nSize; ++i)
             {
                 VehicleData* xdata = new VehicleData();
@@ -122,6 +117,3 @@ public:
         return ObjExtData.at(CPools::GetObjectRef(obj) >> 8);
     }
 };
-extern PedExtended;
-extern VehicleExtended;
-extern ObjectExtended;

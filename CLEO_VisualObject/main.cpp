@@ -2,7 +2,7 @@
 #include <mod/logger.h>
 #include "main.h"
 
-MYMOD(net.teco.visualobject, CLEO VisualObject, 1.1, TecoReacvite)
+MYMOD(net.teco.visualobject, CLEO VisualObject, 1.0.1, TecoReacvite)
 NEEDGAME(com.rockstargames.gtasa) // only SA
 BEGIN_DEPLIST()
     ADD_DEPENDENCY_VER(net.rusjj.cleolib, 2.0.1.10)
@@ -1141,8 +1141,10 @@ CLEO_Fn(GET_OFFSET_FROM_VISUAL_OBJECT_IN_WORLD_COORDS)
         RwFrame* frame = visual->frame;
         if (clump) frame = (RwFrame*)clump->object.parent;
         
-        RwV3d offset = { cleo->ReadParam(handle)->f, cleo->ReadParam(handle)->f, cleo->ReadParam(handle)->f };
-        RwV3d posReturn = { 0.0, 0.0, 0.0 };
+        RwV3d offset, posReturn;
+        offset.x = cleo->ReadParam(handle)->f;
+        offset.y = cleo->ReadParam(handle)->f;
+        offset.z = cleo->ReadParam(handle)->f;
         RwV3dTransformPoints(&posReturn, &offset, 1, &frame->ltm);
         
         cleo->GetPointerToScriptVar(handle)->f = posReturn.x;
@@ -1177,9 +1179,9 @@ ON_MOD_PRELOAD()
     SET_TO(RpClumpDestroy, aml->GetSym(hGTASA, "_Z14RpClumpDestroyP7RpClump"));
     SET_TO(RpClumpRender, aml->GetSym(hGTASA, "_Z13RpClumpRenderP7RpClump"));
     SET_TO(RpClumpStreamRead, aml->GetSym(hGTASA, "_Z17RpClumpStreamReadP8RwStream"));
-    
-    // RenderWare loop (for all)
     SET_TO(RpClumpForAllAtomics, aml->GetSym(hGTASA, "_Z20RpClumpForAllAtomicsP7RpClumpPFP8RpAtomicS2_PvES3_"));
+    
+    // Geometry
     SET_TO(RpGeometryForAllMaterials, aml->GetSym(hGTASA, "_Z25RpGeometryForAllMaterialsP10RpGeometryPFP10RpMaterialS2_PvES3_"));
     
     // RpHAnimHierarchy

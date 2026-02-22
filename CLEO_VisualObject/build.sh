@@ -9,10 +9,11 @@ echo "[BUILD] Starting NDK..."
 EXIT_CODE=$?
 echo "[BUILD] Done!"
 
+echo "[BUILD] Transfering lib..."
 directory="$(cd "$(dirname "$0")" && pwd)"
 folderName="$(basename "$directory")"
 rm -rf /sdcard/CompiledLibs/$folderName
 cp -r "$directory/libs" /sdcard/CompiledLibs/$folderName
-echo "[BUILD] Lib located at: /sdcard/CompiledLibs/$folderName folder"
+echo "[BUILD] Lib located at: /sdcard/CompiledLibs/$folderName"
 
 exit $EXIT_CODE
