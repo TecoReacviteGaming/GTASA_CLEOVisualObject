@@ -31,6 +31,8 @@ With this plugin:
 6013=1,delete_all_visual_objects_from_char %1d% //NOT GLOBAL
 6014=1,delete_all_visual_objects_from_vehicle %1d% //NOT GLOBAL
 6015=1,delete_all_visual_objects_from_object %1d% //NOT GLOBAL
+
+; Visual Object 1.0.1
 6016=2,%2d% = get_visual_object_model_id %1d%
 6017=2,%2d% = get_visual_object_dff_name %1d%
 6018=2,is_visual_object %1d% model_id %2d%

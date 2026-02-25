@@ -5,7 +5,6 @@ echo "NDK located at: $NDKPath"
 buildScript="$NDKPath/ndk-build"
 
 echo "[BUILD] Starting NDK..."
-start_time=$(date +%s%3N)
 "$buildScript" NDK_PROJECT_PATH="$PWD" APP_BUILD_SCRIPT="$PWD/Android.mk" NDK_APPLICATION_MK="$PWD/Application.mk" NDK_DEBUG=0 -j12
 EXIT_CODE=$?
 echo "[BUILD] Process finished"
