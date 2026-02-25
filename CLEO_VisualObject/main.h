@@ -3,6 +3,8 @@
 #include <vector>
 #include <cstddef>
 #include <cmath>
+#include <cstring>
+#include <cstdio>
 
 #include "cleo.h"
 #include "cleoaddon.h"
@@ -22,9 +24,10 @@ extern ISAUtils* sautils;
 #include "aml-psdk/game_sa/engine/ModelInfo.h"
 #include "aml-psdk/game_sa/other/Pools.h"
 #include "aml-psdk/game_sa/Events.h"
-#include "VisualObject.h"
 
 #define MAX_STR_LEN 0xFF
+
+#include "VisualObject.h"
 
 class PedData
 {

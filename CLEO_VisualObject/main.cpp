@@ -60,7 +60,11 @@ inline VisualObject* CreateVisualObjectOnChar(CPed* ped, int modelId, const char
                         RwFrame* frame = RwFrameCreate();
                         RpAtomicSetFrame(atomic, frame);
                         RwFrameUpdateObjects(frame);
-                        visual = new VisualObject(clump, frame, atomic, ped, nullptr, nullptr, -1, fmt, bone, x, y, z, rx, ry, rz, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f);
+                        
+                        visual = new VisualObject(clump, frame, atomic, ped, nullptr, nullptr, -1, bone, x, y, z, rx, ry, rz, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f);
+                        const char* filename = strrchr(fmt, '/');
+                        filename = filename ? filename + 1 : fmt;
+                        strcpy(visual->dff_name, filename);
                     }
                 }
             }
@@ -82,7 +86,7 @@ inline VisualObject* CreateVisualObjectOnChar(CPed* ped, int modelId, const char
                 RpAtomic* rpAtomic = RpAtomicClone(atomic);
                 RpAtomicSetFrame(rpAtomic, rwFrame);
                 
-                visual = new VisualObject(nullptr, rwFrame, rpAtomic, ped, nullptr, nullptr, modelId, "", bone, x, y, z, rx, ry, rz, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f);
+                visual = new VisualObject(nullptr, rwFrame, rpAtomic, ped, nullptr, nullptr, modelId, bone, x, y, z, rx, ry, rz, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f);
             }
         }
         else
@@ -94,7 +98,7 @@ inline VisualObject* CreateVisualObjectOnChar(CPed* ped, int modelId, const char
                 
                 RpClump* rpClump = (RpClump*)reinterpret_cast<CClumpModelInfo*>(modelInfo)->CreateInstance();
                 
-                visual = new VisualObject(rpClump, nullptr, nullptr, ped, nullptr, nullptr, modelId, "", bone, x, y, z, rx, ry, rz, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f);
+                visual = new VisualObject(rpClump, nullptr, nullptr, ped, nullptr, nullptr, modelId, bone, x, y, z, rx, ry, rz, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f);
                 visual->renderType = CLUMP_RENDERER;
             }
         }
@@ -126,7 +130,11 @@ inline VisualObject* CreateVisualObjectOnVehicle(CVehicle* veh, int modelId, con
                         RwFrame* frame = RwFrameCreate();
                         RpAtomicSetFrame(atomic, frame);
                         RwFrameUpdateObjects(frame);
-                        visual = new VisualObject(clump, frame, atomic, nullptr, veh, nullptr, -1, fmt, -1, x, y, z, rx, ry, rz, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f);
+                        
+                        visual = new VisualObject(clump, frame, atomic, nullptr, veh, nullptr, -1, -1, x, y, z, rx, ry, rz, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f);
+                        const char* filename = strrchr(fmt, '/');
+                        filename = filename ? filename + 1 : fmt;
+                        strcpy(visual->dff_name, filename);
                     }
                 }
             }
@@ -148,7 +156,7 @@ inline VisualObject* CreateVisualObjectOnVehicle(CVehicle* veh, int modelId, con
                 RpAtomic* rpAtomic = RpAtomicClone(atomic);
                 RpAtomicSetFrame(rpAtomic, rwFrame);
                 
-                visual = new VisualObject(nullptr, rwFrame, rpAtomic, nullptr, veh, nullptr, modelId, "", -1, x, y, z, rx, ry, rz, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f);
+                visual = new VisualObject(nullptr, rwFrame, rpAtomic, nullptr, veh, nullptr, modelId, -1, x, y, z, rx, ry, rz, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f);
             }
         }
         else
@@ -160,7 +168,7 @@ inline VisualObject* CreateVisualObjectOnVehicle(CVehicle* veh, int modelId, con
                 
                 RpClump* rpClump = (RpClump*)reinterpret_cast<CClumpModelInfo*>(modelInfo)->CreateInstance();
                 
-                visual = new VisualObject(rpClump, nullptr, nullptr, nullptr, veh, nullptr, modelId, "", -1, x, y, z, rx, ry, rz, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f);
+                visual = new VisualObject(rpClump, nullptr, nullptr, nullptr, veh, nullptr, modelId, -1, x, y, z, rx, ry, rz, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f);
                 visual->renderType = CLUMP_RENDERER;
             }
         }
@@ -192,7 +200,11 @@ inline VisualObject* CreateVisualObjectOnObject(CObject* obj, int modelId, const
                         RwFrame* frame = RwFrameCreate();
                         RpAtomicSetFrame(atomic, frame);
                         RwFrameUpdateObjects(frame);
-                        visual = new VisualObject(clump, frame, atomic, nullptr, nullptr, obj, -1, fmt, -1, x, y, z, rx, ry, rz, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f);
+                        
+                        visual = new VisualObject(clump, frame, atomic, nullptr, nullptr, obj, -1, -1, x, y, z, rx, ry, rz, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f);
+                        const char* filename = strrchr(fmt, '/');
+                        filename = filename ? filename + 1 : fmt;
+                        strcpy(visual->dff_name, filename);
                     }
                 }
             }
@@ -214,7 +226,7 @@ inline VisualObject* CreateVisualObjectOnObject(CObject* obj, int modelId, const
                 RpAtomic* rpAtomic = RpAtomicClone(atomic);
                 RpAtomicSetFrame(rpAtomic, rwFrame);
                 
-                visual = new VisualObject(nullptr, rwFrame, rpAtomic, nullptr, nullptr, obj, modelId, "", -1, x, y, z, rx, ry, rz, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f);
+                visual = new VisualObject(nullptr, rwFrame, rpAtomic, nullptr, nullptr, obj, modelId, -1, x, y, z, rx, ry, rz, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f);
             }
         }
         else
@@ -226,7 +238,7 @@ inline VisualObject* CreateVisualObjectOnObject(CObject* obj, int modelId, const
                 
                 RpClump* rpClump = (RpClump*)reinterpret_cast<CClumpModelInfo*>(modelInfo)->CreateInstance();
                 
-                visual = new VisualObject(rpClump, nullptr, nullptr, nullptr, nullptr, obj, modelId, "", -1, x, y, z, rx, ry, rz, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f);
+                visual = new VisualObject(rpClump, nullptr, nullptr, nullptr, nullptr, obj, modelId, -1, x, y, z, rx, ry, rz, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f);
                 visual->renderType = CLUMP_RENDERER;
             }
         }
@@ -258,7 +270,11 @@ inline VisualObject* CreateVisualObjectOnWorld(int modelId, const char* fmt, flo
                         RwFrame* frame = RwFrameCreate();
                         RpAtomicSetFrame(atomic, frame);
                         RwFrameUpdateObjects(frame);
-                        visual = new VisualObject(clump, frame, atomic, nullptr, nullptr, nullptr, -1, fmt, -1, x, y, z, rx, ry, rz, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f);
+                        
+                        visual = new VisualObject(clump, frame, atomic, nullptr, nullptr, nullptr, -1, -1, x, y, z, rx, ry, rz, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f);
+                        const char* filename = strrchr(fmt, '/');
+                        filename = filename ? filename + 1 : fmt;
+                        strcpy(visual->dff_name, filename);
                     }
                 }
             }
@@ -280,7 +296,7 @@ inline VisualObject* CreateVisualObjectOnWorld(int modelId, const char* fmt, flo
                 RpAtomic* rpAtomic = RpAtomicClone(atomic);
                 RpAtomicSetFrame(rpAtomic, rwFrame);
                 
-                visual = new VisualObject(nullptr, rwFrame, rpAtomic, nullptr, nullptr, nullptr, modelId, "", -1, x, y, z, rx, ry, rz, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f);
+                visual = new VisualObject(nullptr, rwFrame, rpAtomic, nullptr, nullptr, nullptr, modelId, -1, x, y, z, rx, ry, rz, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f);
             }
         }
         else
@@ -292,7 +308,7 @@ inline VisualObject* CreateVisualObjectOnWorld(int modelId, const char* fmt, flo
                 
                 RpClump* rpClump = (RpClump*)reinterpret_cast<CClumpModelInfo*>(modelInfo)->CreateInstance();
                 
-                visual = new VisualObject(rpClump, nullptr, nullptr, nullptr, nullptr, nullptr, modelId, "", -1, x, y, z, rx, ry, rz, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f);
+                visual = new VisualObject(rpClump, nullptr, nullptr, nullptr, nullptr, nullptr, modelId, -1, x, y, z, rx, ry, rz, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f);
                 visual->renderType = CLUMP_RENDERER;
             }
         }
@@ -411,7 +427,7 @@ ON_MOD_LOAD()
                         if (clump && visual->renderType == CLUMP_RENDERER) frame = (RwFrame*)clump->object.parent;
                         
                         RpHAnimHierarchy* hierarchy = GetAnimHierarchyFromSkinClump(visual->ped->m_pRwClump);
-                        RwMatrix* boneMatrix = &RpHAnimHierarchyGetMatrixArray(hierarchy)[RpHAnimIDGetIndex(hierarchy, visual->bone_id)];
+                        RwMatrix* boneMatrix = &hierarchy->pMatrixArray[RpHAnimIDGetIndex(hierarchy, visual->bone_id)];
                         memcpy(&frame->modelling, boneMatrix, sizeof(frame->modelling));
                         RwV3d pointsIn = { visual->offset.x, visual->offset.y, visual->offset.z };
                         RwV3dTransformPoints(&pointsIn, &pointsIn, 1, boneMatrix);
@@ -777,7 +793,7 @@ CLEO_Fn(CREATE_VISUAL_OBJECT_TO_CHAR_BONE_FROM_ID)
     float ry = cleo->ReadParam(handle)->f;
     float rz = cleo->ReadParam(handle)->f;
     
-    VisualObject* visual = CreateVisualObjectOnChar(ped, modelId, "", boneId, x, y, z, rx, ry, rz);
+    VisualObject* visual = CreateVisualObjectOnChar(ped, modelId, nullptr, boneId, x, y, z, rx, ry, rz);
     PedData* xdata = PedExtended::GetExtData(ped);
     xdata->ScriptID = cleoaddon->GetScriptID(handle);
     cleo->GetPointerToScriptVar(handle)->i = (int)visual;
@@ -1035,31 +1051,20 @@ CLEO_Fn(DELETE_ALL_VISUAL_OBJECT_FROM_OBJECT)
 CLEO_Fn(GET_VISUAL_OBJECT_MODEL_ID)
 {
     VisualObject* visual = (VisualObject*)cleo->ReadParam(handle)->i;
-    if (visual)
-    {
-        int modelID = visual->model_id;
-        cleo->GetPointerToScriptVar(handle)->i = modelID;
-        cleoaddon->UpdateCompareFlag(handle, modelID != -1);
-    }
+    cleo->GetPointerToScriptVar(handle)->i = visual != nullptr ? visual->model_id : 0;
 }
 CLEO_Fn(GET_VISUAL_OBJECT_DFF_NAME)
 {
     VisualObject* visual = (VisualObject*)cleo->ReadParam(handle)->i;
-    if (visual)
-    {
-        const char* dff_name = visual->dff_name;
-        cleoaddon->WriteString(handle, dff_name);
-        cleoaddon->UpdateCompareFlag(handle, dff_name != nullptr);
-    }
+    const char* dffName = visual != nullptr ? visual->dff_name : "NULL";
+    cleoaddon->WriteString(handle, dffName);
 }
 CLEO_Fn(IS_VISUAL_OBJECT_MODEL_ID)
 {
     VisualObject* visual = (VisualObject*)cleo->ReadParam(handle)->i;
-    if (visual)
-    {
-        int ID = cleo->ReadParam(handle)->i;
-        cleoaddon->UpdateCompareFlag(handle, visual->model_id == ID);
-    }
+    int VisualID = cleo->ReadParam(handle)->i;
+    if (!visual) return;
+    cleoaddon->UpdateCompareFlag(handle, VisualID == visual->model_id);
 }
 CLEO_Fn(IS_VISUAL_OBJECT_DFF_NAME)
 {
@@ -1069,7 +1074,7 @@ CLEO_Fn(IS_VISUAL_OBJECT_DFF_NAME)
         char buf[MAX_STR_LEN];
         cleoaddon->ReadString(handle, buf, sizeof(buf));
         for (int i = 0; buf[i] != 0; ++i) if (buf[i] == '\\') buf[i] = '/';
-        cleoaddon->UpdateCompareFlag(handle, strcasecmp(visual->dff_name, buf) == 0);
+        cleoaddon->UpdateCompareFlag(handle, strcmp(visual->dff_name, buf) == 0);
     }
 }
 CLEO_Fn(IS_VISUAL_OBJECT_PED_ATTACHED)
@@ -1077,6 +1082,7 @@ CLEO_Fn(IS_VISUAL_OBJECT_PED_ATTACHED)
     VisualObject* visual = (VisualObject*)cleo->ReadParam(handle)->i;
     if (visual)
     {
+        // There's no detachment, so check if it's available instead.
         CPed* ped = CPools::GetPed(cleo->ReadParam(handle)->i);
         bool isAttached = false;
         PedData* xdata = PedExtended::GetExtData(ped);
@@ -1097,6 +1103,7 @@ CLEO_Fn(IS_VISUAL_OBJECT_VEHICLE_ATTACHED)
     VisualObject* visual = (VisualObject*)cleo->ReadParam(handle)->i;
     if (visual)
     {
+        // There's no detachment, so check if it's available instead.
         CVehicle* veh = CPools::GetVehicle(cleo->ReadParam(handle)->i);
         bool isAttached = false;
         VehicleData* xdata = VehicleExtended::GetExtData(veh);
@@ -1117,6 +1124,7 @@ CLEO_Fn(IS_VISUAL_OBJECT_OBJECT_ATTACHED)
     VisualObject* visual = (VisualObject*)cleo->ReadParam(handle)->i;
     if (visual)
     {
+        // There's no detachment, so check if it's available instead.
         CObject* obj = CPools::GetObject(cleo->ReadParam(handle)->i);
         bool isAttached = false;
         ObjectData* xdata = ObjectExtended::GetExtData(obj);

@@ -28,10 +28,10 @@ public:
     bool hideIfCar;
     eRenderType renderType;
     uint16_t ScriptID;
-    const char* dff_name;
+    char dff_name[MAX_STR_LEN];
     int model_id;
     
-    VisualObject(RpClump* _clump, RwFrame* _frame, RpAtomic* _atomic, CPed* _ped, CVehicle* _veh, CObject* _obj, int _model_id, const char* _dff_name, int _bone_id, float _x, float _y, float _z, float _rx, float _ry, float _rz, float _sx, float _sy, float _sz, float _dx, float _dy, float _dz, float _dw)
+    VisualObject(RpClump* _clump, RwFrame* _frame, RpAtomic* _atomic, CPed* _ped, CVehicle* _veh, CObject* _obj, int _model_id, int _bone_id, float _x, float _y, float _z, float _rx, float _ry, float _rz, float _sx, float _sy, float _sz, float _dx, float _dy, float _dz, float _dw)
     {
         clump = _clump; 
         frame = _frame; 
@@ -59,7 +59,6 @@ public:
         hideIfCar = false; 
         renderType = ATOMIC_RENDERER;
         ScriptID = 0;
-        dff_name = _dff_name;
         model_id = _model_id;
     }
 };

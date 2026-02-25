@@ -5,15 +5,17 @@ echo "NDK located at: $NDKPath"
 buildScript="$NDKPath/ndk-build"
 
 echo "[BUILD] Starting NDK..."
+start_time=$(date +%s%3N)
 "$buildScript" NDK_PROJECT_PATH="$PWD" APP_BUILD_SCRIPT="$PWD/Android.mk" NDK_APPLICATION_MK="$PWD/Application.mk" NDK_DEBUG=0 -j12
 EXIT_CODE=$?
-echo "[BUILD] Done!"
+echo "[BUILD] Process finished"
 
-echo "[BUILD] Transfering lib..."
 directory="$(cd "$(dirname "$0")" && pwd)"
 folderName="$(basename "$directory")"
 rm -rf /sdcard/CompiledLibs/$folderName
 cp -r "$directory/libs" /sdcard/CompiledLibs/$folderName
 echo "[BUILD] Lib located at: /sdcard/CompiledLibs/$folderName"
+
+# This plugin was compiled on Android.
 
 exit $EXIT_CODE
