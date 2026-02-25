@@ -1074,7 +1074,9 @@ CLEO_Fn(IS_VISUAL_OBJECT_DFF_NAME)
         char buf[MAX_STR_LEN];
         cleoaddon->ReadString(handle, buf, sizeof(buf));
         for (int i = 0; buf[i] != 0; ++i) if (buf[i] == '\\') buf[i] = '/';
-        cleoaddon->UpdateCompareFlag(handle, strcmp(visual->dff_name, buf) == 0);
+        const char* filename = strrchr(buf, '/');
+        filename = filename ? filename + 1 : buf;
+        cleoaddon->UpdateCompareFlag(handle, strcmp(visual->dff_name, filename) == 0);
     }
 }
 CLEO_Fn(IS_VISUAL_OBJECT_PED_ATTACHED)
