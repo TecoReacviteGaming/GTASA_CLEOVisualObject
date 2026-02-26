@@ -5,7 +5,6 @@ With this plugin:
 - Attach many objects as you like to entity.
 - Create objects from dff file.
 - many more!
-- 
 
 ## [Opcodes documentation 📝](<https://docs.google.com/document/d/1bE5Vq2hb4EIHE7bmFDZsCSxBfJrubZoy4rd_ADBsdVk/edit?usp=sharing>)
 ```ini
